@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculadora de Pegada Ecológica</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header>
+        <nav aria-label="Navegação principal">
+            <ul class="nav-list">
+                <li><button id="nav-home" class="nav-button" aria-current="page">Início</button></li>
+                <li><button id="nav-questionnaire" class="nav-button">Questionário</button></li>
+                <li><button id="nav-history" class="nav-button">Histórico</button></li>
+                <li><button id="nav-about" class="nav-button">Sobre</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="app" tabindex="-1">
+        <!-- Screens will be dynamically shown/hidden -->
+        <section id="home" class="screen active" aria-label="Página inicial">
+            <h1>Calculadora de Pegada Ecológica</h1>
+            <p>Descubra seu impacto ambiental e receba recomendações para reduzi-lo.</p>
+            <button id="start-btn" class="primary-btn">Começar</button>
+        </section>
+
+        <section id="questionnaire" class="screen" aria-label="Questionário de pegada ecológica">
+            <h2>Questionário</h2>
+            <form id="questionnaire-form">
+                <!-- Transportation -->
+                <fieldset>
+                    <legend>Transporte</legend>
+                    <label><input type="radio" name="transport" value="0" required /> Uso exclusivo de transporte
+                        público ou bicicleta</label><br />
+                    <label><input type="radio" name="transport" value="3" /> Uso misto, incluindo carro
+                        ocasional</label><br />
+                    <label><input type="radio" name="transport" value="7" /> Uso diário de carro particular</label>
+                </fieldset>
+                <!-- Energy -->
+                <fieldset>
+                    <legend>Energia</legend>
+                    <label><input type="radio" name="energy" value="0" required /> Uso de energia
+                        renovável</label><br />
+                    <label><input type="radio" name="energy" value="4" /> Uso misto</label><br />
+                    <label><input type="radio" name="energy" value="8" /> Uso predominante de energia não
+                        renovável</label>
+                </fieldset>
+                <!-- Food -->
+                <fieldset>
+                    <legend>Alimentação</legend>
+                    <label><input type="radio" name="food" value="0" required /> Dieta vegetariana ou
+                        vegana</label><br />
+                    <label><input type="radio" name="food" value="5" /> Consumo moderado de carne</label><br />
+                    <label><input type="radio" name="food" value="10" /> Consumo frequente de carne vermelha</label>
+                </fieldset>
+                <!-- Water -->
+                <fieldset>
+                    <legend>Água</legend>
+                    <label><input type="radio" name="water" value="0" required /> Uso consciente e economias
+                        frequentes</label><br />
+                    <label><input type="radio" name="water" value="3" /> Uso regular, sem precauções
+                        especiais</label><br />
+                    <label><input type="radio" name="water" value="6" /> Uso excessivo ou desperdício frequente</label>
+                </fieldset>
+                <button type="submit" class="primary-btn">Calcular</button>
+            </form>
+        </section>
+
+        <section id="results" class="screen" aria-label="Resultados da pegada ecológica" hidden>
+            <h2>Seus Resultados</h2>
+            <p><strong>Pontuação total:</strong> <span id="total-score"></span></p>
+            <p><strong>Planetas necessários:</strong> <span id="planets-needed"></span></p>
+            <p><strong>Classificação:</strong> <span id="classification"></span></p>
+            <p id="recommendations"></p>
+            <button id="results-back" class="secondary-btn">Voltar ao Início</button>
+        </section>
+
+        <section id="history" class="screen" aria-label="Histórico de resultados" hidden>
+            <h2>Histórico</h2>
+            <ul id="history-list" aria-live="polite" aria-relevant="additions"></ul>
+            <button id="history-clear" class="secondary-btn">Limpar Histórico</button>
+        </section>
+
+        <section id="about" class="screen" aria-label="Sobre o projeto" hidden>
+            <h2>Sobre o Projeto</h2>
+            <p>Este projeto tem como objetivo ajudar você a entender e reduzir sua pegada ecológica.</p>
+            <p>Desenvolvido por [Seu Nome/Equipe].</p>
+            <p>O questionário baseia-se em hábitos relacionados a transporte, energia, alimentação e uso de água.</p>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
