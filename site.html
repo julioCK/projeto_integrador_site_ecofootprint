@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Calcule sua pegada ecológica e descubra como reduzir seu impacto ambiental com nosso questionário interativo">
+    <meta name="theme-color" content="#004d40">
     <title>Calculadora de Pegada Ecológica</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
 </head>
 
 <body>
+    <a href="#app" class="skip-link">Pular para o conteúdo principal</a>
+    
     <header>
         <nav aria-label="Navegação principal">
             <ul class="nav-list">
@@ -21,79 +25,196 @@
     </header>
 
     <main id="app" tabindex="-1">
-        <!-- Screens will be dynamically shown/hidden -->
-        <section id="home" class="screen active" aria-label="Página inicial">
-            <h1>Calculadora de Pegada Ecológica</h1>
-            <p>Descubra seu impacto ambiental e receba recomendações para reduzi-lo.</p>
-            <button id="start-btn" class="primary-btn">Começar</button>
+        <!-- Telas serão mostradas/ocultadas dinamicamente -->
+        <section id="home" class="screen active" aria-labelledby="home-heading">
+            <h1 id="home-heading">Calculadora de Pegada Ecológica</h1>
+            <p>Descubra seu impacto ambiental e receba recomendações personalizadas para reduzi-lo. Responda nosso questionário rápido e simples para calcular sua pontuação.</p>
+            <button id="start-btn" class="primary-btn">Começar Questionário</button>
         </section>
 
-        <section id="questionnaire" class="screen" aria-label="Questionário de pegada ecológica">
-            <h2>Questionário</h2>
+        <section id="questionnaire" class="screen" aria-labelledby="questionnaire-heading">
+            <h2 id="questionnaire-heading">Questionário</h2>
+            <p>Responda as perguntas abaixo para calcular sua pegada ecológica:</p>
+            
             <form id="questionnaire-form">
-                <!-- Transportation -->
+                <!-- Transporte -->
                 <fieldset>
                     <legend>Transporte</legend>
-                    <label><input type="radio" name="transport" value="0" required /> Uso exclusivo de transporte
-                        público ou bicicleta</label><br />
-                    <label><input type="radio" name="transport" value="3" /> Uso misto, incluindo carro
-                        ocasional</label><br />
-                    <label><input type="radio" name="transport" value="7" /> Uso diário de carro particular</label>
+                    <div class="question-group">
+                        <p class="question-text">Com que frequência utiliza carro ou moto?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="carro" value="3" required /> Sempre (3)</label>
+                            <label><input type="radio" name="carro" value="2" /> Às vezes (2)</label>
+                            <label><input type="radio" name="carro" value="1" /> Raramente (1)</label>
+                            <label><input type="radio" name="carro" value="0" /> Nunca (0)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-group">
+                        <p class="question-text">Você utiliza transporte público com frequência?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="transporte_publico" value="2" required /> Nunca (2)</label>
+                            <label><input type="radio" name="transporte_publico" value="1" /> Às vezes (1)</label>
+                            <label><input type="radio" name="transporte_publico" value="0" /> Sempre (0)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-group">
+                        <p class="question-text">Você usa bicicleta ou caminha para deslocamentos?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="bicicleta" value="2" required /> Nunca (2)</label>
+                            <label><input type="radio" name="bicicleta" value="1" /> Às vezes (1)</label>
+                            <label><input type="radio" name="bicicleta" value="0" /> Sempre (0)</label>
+                        </div>
+                    </div>
                 </fieldset>
-                <!-- Energy -->
+                
+                <!-- Energia -->
                 <fieldset>
-                    <legend>Energia</legend>
-                    <label><input type="radio" name="energy" value="0" required /> Uso de energia
-                        renovável</label><br />
-                    <label><input type="radio" name="energy" value="4" /> Uso misto</label><br />
-                    <label><input type="radio" name="energy" value="8" /> Uso predominante de energia não
-                        renovável</label>
+                    <legend>Consumo de Energia</legend>
+                    <div class="question-group">
+                        <p class="question-text">Como é o consumo de energia elétrica da sua casa?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="consumo_energia" value="3" required /> Alto (3)</label>
+                            <label><input type="radio" name="consumo_energia" value="2" /> Moderado (2)</label>
+                            <label><input type="radio" name="consumo_energia" value="1" /> Econômico (1)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-group">
+                        <p class="question-text">Sua residência possui energia alternativa (solar/eólica)?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="energia_alternativa" value="2" required /> Não (2)</label>
+                            <label><input type="radio" name="energia_alternativa" value="0" /> Sim (0)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-group">
+                        <p class="question-text">Sua residência possui lâmpadas LED?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="lampadas_led" value="2" required /> Não (2)</label>
+                            <label><input type="radio" name="lampadas_led" value="0" /> Sim (0)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-group">
+                        <p class="question-text">Você desliga aparelhos da tomada quando não está usando?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="desliga_aparelhos" value="2" required /> Nunca (2)</label>
+                            <label><input type="radio" name="desliga_aparelhos" value="1" /> Às vezes (1)</label>
+                            <label><input type="radio" name="desliga_aparelhos" value="0" /> Sempre (0)</label>
+                        </div>
+                    </div>
                 </fieldset>
-                <!-- Food -->
+                
+                <!-- Alimentação -->
                 <fieldset>
                     <legend>Alimentação</legend>
-                    <label><input type="radio" name="food" value="0" required /> Dieta vegetariana ou
-                        vegana</label><br />
-                    <label><input type="radio" name="food" value="5" /> Consumo moderado de carne</label><br />
-                    <label><input type="radio" name="food" value="10" /> Consumo frequente de carne vermelha</label>
+                    <div class="question-group">
+                        <p class="question-text">Frequência de consumo de carne vermelha:</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="carne_vermelha" value="3" required /> Diariamente (3)</label>
+                            <label><input type="radio" name="carne_vermelha" value="2" /> Algumas vezes/semana (2)</label>
+                            <label><input type="radio" name="carne_vermelha" value="1" /> Raramente (1)</label>
+                            <label><input type="radio" name="carne_vermelha" value="0" /> Nunca (0)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-group">
+                        <p class="question-text">Consome industrializados com frequência?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="industrializados" value="2" required /> Sim (2)</label>
+                            <label><input type="radio" name="industrializados" value="0" /> Não (0)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-group">
+                        <p class="question-text">Compra alimentos de produtores locais?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="produtores_locais" value="2" required /> Nunca (2)</label>
+                            <label><input type="radio" name="produtores_locais" value="1" /> Às vezes (1)</label>
+                            <label><input type="radio" name="produtores_locais" value="0" /> Sempre (0)</label>
+                        </div>
+                    </div>
                 </fieldset>
-                <!-- Water -->
+                
+                <!-- Água -->
                 <fieldset>
-                    <legend>Água</legend>
-                    <label><input type="radio" name="water" value="0" required /> Uso consciente e economias
-                        frequentes</label><br />
-                    <label><input type="radio" name="water" value="3" /> Uso regular, sem precauções
-                        especiais</label><br />
-                    <label><input type="radio" name="water" value="6" /> Uso excessivo ou desperdício frequente</label>
+                    <legend>Consumo de Água</legend>
+                    <div class="question-group">
+                        <p class="question-text">Você pratica economia de água em casa?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="economia_agua" value="3" required /> Nunca (3)</label>
+                            <label><input type="radio" name="economia_agua" value="1" /> Às vezes (1)</label>
+                            <label><input type="radio" name="economia_agua" value="0" /> Sempre (0)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-group">
+                        <p class="question-text">Sua residência capta água da chuva / reaproveita?</p>
+                        <div class="radio-group">
+                            <label><input type="radio" name="agua_chuva" value="2" required /> Não (2)</label>
+                            <label><input type="radio" name="agua_chuva" value="0" /> Sim (0)</label>
+                        </div>
+                    </div>
                 </fieldset>
-                <button type="submit" class="primary-btn">Calcular</button>
+                
+                <button type="submit" class="primary-btn">
+                    <span class="btn-text">Calcular Pegada</span>
+                    <div class="loader" id="submit-loader"></div>
+                </button>
             </form>
         </section>
 
-        <section id="results" class="screen" aria-label="Resultados da pegada ecológica" hidden>
-            <h2>Seus Resultados</h2>
-            <p><strong>Pontuação total:</strong> <span id="total-score"></span></p>
-            <p><strong>Planetas necessários:</strong> <span id="planets-needed"></span></p>
-            <p><strong>Classificação:</strong> <span id="classification"></span></p>
+        <section id="results" class="screen" aria-labelledby="results-heading" hidden>
+            <h2 id="results-heading">Seus Resultados</h2>
+            
+            <div class="result-card">
+                <p><strong>Pontuação total:</strong> <span id="total-score" class="result-value">0</span></p>
+                <p><strong>Planetas necessários:</strong> <span id="planets-needed" class="result-value">0</span></p>
+                <p><strong>Classificação:</strong> <span id="classification" class="result-value">-</span></p>
+            </div>
+            
+            <h3>Recomendações</h3>
             <p id="recommendations"></p>
-            <button id="results-back" class="secondary-btn">Voltar ao Início</button>
+            
+            <div class="button-group">
+                <button id="results-back" class="primary-btn">Voltar ao Início</button>
+                
+            </div>
         </section>
 
-        <section id="history" class="screen" aria-label="Histórico de resultados" hidden>
-            <h2>Histórico</h2>
-            <ul id="history-list" aria-live="polite" aria-relevant="additions"></ul>
+        <section id="history" class="screen" aria-labelledby="history-heading" hidden>
+            <h2 id="history-heading">Histórico de Resultados</h2>
+            
+            <div role="status" aria-live="polite">
+                <p id="history-status">Carregando seu histórico...</p>
+            </div>
+            
+            <ul id="history-list" aria-labelledby="history-heading"></ul>
+            
             <button id="history-clear" class="secondary-btn">Limpar Histórico</button>
         </section>
 
-        <section id="about" class="screen" aria-label="Sobre o projeto" hidden>
-            <h2>Sobre o Projeto</h2>
-            <p>Este projeto tem como objetivo ajudar você a entender e reduzir sua pegada ecológica.</p>
-            <p>Desenvolvido por [Seu Nome/Equipe].</p>
-            <p>O questionário baseia-se em hábitos relacionados a transporte, energia, alimentação e uso de água.</p>
+        <section id="about" class="screen" aria-labelledby="about-heading" hidden>
+            <h2 id="about-heading">Sobre o Projeto</h2>
+            <p>Este projeto tem como objetivo ajudar você a entender e reduzir sua pegada ecológica através de um questionário simples e informativo.</p>
+            
+            <h3>Como funciona</h3>
+            <p>Nossa calculadora avalia quatro áreas principais do seu consumo diário:</p>
+            <ul>
+                <li><strong>Transporte:</strong> Como você se locomove no dia a dia</li>
+                <li><strong>Energia:</strong> Fontes de energia que você utiliza</li>
+                <li><strong>Alimentação:</strong> Seus hábitos alimentares e consumo de carne</li>
+                <li><strong>Água:</strong> Seu padrão de consumo de água</li>
+            </ul>
+            
+            <p>Desenvolvido com ♥ para promover conscientização ambiental.</p>
         </section>
     </main>
 
-    <script src="app.js"></script>
-</body>
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
 
+    <script src="script.js"></script>
+</body>
 </html>
