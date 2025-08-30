@@ -55,10 +55,10 @@ Não é necessário processo de build, pois a aplicação é estática. Todos os
 Estrutura de Pastas
 
 projeto_integrador_site_ecofootprint/
-├── index.html          # Arquivo principal HTML
-├── styles.css          # Estilos da aplicação
-├── script.js           # Lógica JavaScript
-└── README.md           # Este arquivo
+    /index.html          # Arquivo principal HTML
+    /styles.css          # Estilos da aplicação
+    /script.js           # Lógica JavaScript
+    /README.md           # Este arquivo
 
 
 
