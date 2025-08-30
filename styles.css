@@ -348,8 +348,36 @@ input[type="radio"] {
     color: var(--color-primary);
 }
 
+/* Estilos para a página Sobre */
+.privacy-notice {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid #ffc107;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius-sm);
+}
+
+.privacy-notice h4 {
+    color: #f57c00;
+    margin-top: 0;
+}
+
+/* Melhorias de espaçamento para a página Sobre */
+#about h3 {
+    margin-top: 1.5rem;
+    color: var(--color-primary-light);
+}
+
+#about ul {
+    margin-bottom: 1.5rem;
+}
+
+#about li {
+    margin-bottom: 0.5rem;
+}
+
 /* Responsividade - Mobile First */
-/* Telas muito pequenas (até 359px) */
+/* até 359px */
 @media (max-width: 359px) {
     .nav-list {
         flex-direction: column;
@@ -366,7 +394,7 @@ input[type="radio"] {
     }
 }
 
-/* Smartphones (360px - 427px) */
+/* 360px - 427px */
 @media (min-width: 360px) and (max-width: 427px) {
     main {
         margin: 0.5rem auto;
@@ -417,7 +445,7 @@ input[type="radio"] {
     }
 }
 
-/* Telas grandes (1280px+) */
+/* 1280px+ */
 @media (min-width: 1280px) {
     main {
         max-width: 1000px;

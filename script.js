@@ -198,7 +198,7 @@ historyClearBtn.addEventListener('click', () => {
     }
 });
 
-// Manipuladores de clique dos botões de navegação
+// click dos botões de navegação
 navButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const targetScreen = btn.id.replace('nav-', '');
@@ -216,10 +216,10 @@ resultsBackBtn.addEventListener('click', () => {
     showScreen('home');
 });
 
-// Botão salvar PDF (funcionalidade simulada)
+// Botão salvar PDF (ainda nao implementado)
 savePdfBtn.addEventListener('click', () => {
     showToast('Funcionalidade de exportação em desenvolvimento.', 'info');
-});
+}); 
 
 // Ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Gerenciamento de foco para acessibilidade
+// foco para acessibilidade
 document.addEventListener('focusin', () => {
     document.body.classList.add('keyboard-nav');
 });
